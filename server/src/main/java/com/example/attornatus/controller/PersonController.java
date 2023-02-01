@@ -43,8 +43,7 @@ public class PersonController {
     @PutMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void updatePerson(@PathVariable("id") Long id, @RequestBody Person person) {
-        person.setId(id);
-        personService.updatePerson(person);
+        personService.updatePerson(id, person);
     }
 }
 

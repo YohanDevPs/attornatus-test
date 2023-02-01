@@ -34,7 +34,8 @@ public class PersonServiceImpl implements PersonService{
     }
 
     @Override
-    public Person updatePerson(Person person) {
+    public Person updatePerson(Long id,Person person) {
+        person.setId(id);
         return personRepository.save(person);
     }
 }
