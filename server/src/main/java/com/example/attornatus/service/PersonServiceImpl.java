@@ -15,4 +15,9 @@ public class PersonServiceImpl implements PersonService{
     public Person getPersonById(Long idPerson) {
         return personRepository.findById(idPerson).get();
     }
+
+    @Override
+    public Person savePerson(Person person) {
+        return personRepository.save(person);
+    }
 }

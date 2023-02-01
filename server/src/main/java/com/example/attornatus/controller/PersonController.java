@@ -18,4 +18,12 @@ public class PersonController {
     public Person getPersonById(@PathVariable("id") Long id) {
         return personService.getPersonById(id);
     }
+
+
+    @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
+    public Person savePerson(@RequestBody Person person) {
+        return personService.savePerson(person);
+    }
+
 }

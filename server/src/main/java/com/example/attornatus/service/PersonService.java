@@ -5,4 +5,6 @@ import com.example.attornatus.model.Person;
 public interface PersonService {
 
     Person getPersonById(Long idPerson);
+
+    Person savePerson(Person person);
 }
