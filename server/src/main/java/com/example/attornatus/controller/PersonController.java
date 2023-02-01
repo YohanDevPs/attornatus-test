@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("v1/person")
 public class PersonController {
@@ -19,11 +21,16 @@ public class PersonController {
         return personService.getPersonById(id);
     }
 
+    @GetMapping
+    @ResponseStatus(HttpStatus.OK)
+    public List<Person> personList() {
+        return personService.personList();
+    }
+
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public Person savePerson(@RequestBody Person person) {
         return personService.savePerson(person);
     }
-
 }
