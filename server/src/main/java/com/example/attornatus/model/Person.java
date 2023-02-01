@@ -17,6 +17,9 @@ public class Person {
     @Column(nullable = false)
     private Date birthDate;
 
+    public Person() {
+    }
+
     public Person(Long id, String name, Date birthDate) {
         this.id = id;
         this.name = name;
