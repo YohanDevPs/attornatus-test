@@ -13,4 +13,6 @@ public interface PersonService {
     Person savePerson(Person person);
 
     void deletePersonById(Long id);
+
+    Person updatePerson(Person person);
 }

@@ -39,6 +39,13 @@ public class PersonController {
     public void removeFarmById(@PathVariable("id") Long id) {
         personService.deletePersonById(id);
     };
+
+    @PutMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void updatePerson(@PathVariable("id") Long id, @RequestBody Person person) {
+        person.setId(id);
+        personService.updatePerson(person);
+    }
 }
 
 
