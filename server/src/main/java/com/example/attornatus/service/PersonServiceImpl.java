@@ -27,4 +27,9 @@ public class PersonServiceImpl implements PersonService{
     public Person savePerson(Person person) {
         return personRepository.save(person);
     }
+
+    @Override
+    public void deletePersonById(Long id) {
+        personRepository.deleteById(id);
+    }
 }

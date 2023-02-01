@@ -33,4 +33,12 @@ public class PersonController {
     public Person savePerson(@RequestBody Person person) {
         return personService.savePerson(person);
     }
+
+    @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void removeFarmById(@PathVariable("id") Long id) {
+        personService.deletePersonById(id);
+    };
 }
+
+

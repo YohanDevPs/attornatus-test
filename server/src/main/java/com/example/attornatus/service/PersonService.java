@@ -11,4 +11,6 @@ public interface PersonService {
     List<Person> personList();
 
     Person savePerson(Person person);
+
+    void deletePersonById(Long id);
 }
