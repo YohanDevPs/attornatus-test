@@ -3,6 +3,8 @@ package com.example.attornatus.model;
 import jakarta.persistence.*;
 
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 public class Person {
@@ -17,13 +19,17 @@ public class Person {
     @Column(nullable = false)
     private Date birthDate;
 
+    @OneToMany(cascade=CascadeType.MERGE, mappedBy="person", orphanRemoval=true)
+    private Set<Adress> adressSet = new HashSet<>();
+
     public Person() {
     }
 
-    public Person(Long id, String name, Date birthDate) {
+    public Person(Long id, String name, Date birthDate, Set<Adress> adressSet) {
         this.id = id;
         this.name = name;
         this.birthDate = birthDate;
+        this.adressSet = adressSet;
     }
 
     public Long getId() {
@@ -48,5 +54,13 @@ public class Person {
 
     public void setBirthDate(Date birthDate) {
         this.birthDate = birthDate;
+    }
+
+    public Set<Adress> getAdressSet() {
+        return adressSet;
+    }
+
+    public void setAdressSet(Set<Adress> adressSet) {
+        this.adressSet = adressSet;
     }
 }

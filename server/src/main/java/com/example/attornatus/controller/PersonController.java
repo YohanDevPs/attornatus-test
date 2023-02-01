@@ -27,7 +27,6 @@ public class PersonController {
         return personService.personList();
     }
 
-
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public Person savePerson(@RequestBody Person person) {

@@ -1,8 +1,7 @@
 package com.example.attornatus.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-
-import java.util.Date;
 
 @Entity
 public class Adress {
@@ -23,15 +22,25 @@ public class Adress {
     @Column(nullable = false)
     private String city;
 
+    @Column(nullable = false)
+    private boolean isMainResidence;
+
+    @JsonIgnore
+    @ManyToOne
+    @JoinColumn(name = "person_id")
+    private Person person;
+
     public Adress() {
     }
 
-    public Adress(Long id, String adress, int CEP, int number, String city) {
+    public Adress(Long id, String adress, int CEP, int number, String city, boolean isMainResidence, Person person) {
         this.id = id;
         this.adress = adress;
         this.CEP = CEP;
         this.number = number;
         this.city = city;
+        this.isMainResidence = isMainResidence;
+        this.person = person;
     }
 
     public Long getId() {
@@ -72,5 +81,21 @@ public class Adress {
 
     public void setCity(String city) {
         this.city = city;
+    }
+
+    public boolean isMainResidence() {
+        return isMainResidence;
+    }
+
+    public void setMainResidence(boolean mainResidence) {
+        isMainResidence = mainResidence;
+    }
+
+    public Person getPerson() {
+        return person;
+    }
+
+    public void setPerson(Person person) {
+        this.person = person;
     }
 }
