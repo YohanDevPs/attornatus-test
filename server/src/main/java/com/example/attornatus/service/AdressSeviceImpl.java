@@ -38,7 +38,10 @@ public class AdressSeviceImpl implements AdressService{
 
     @Override
     public Set<Adress> getAdressesByPersonId(Long personId) {
-         return personRepository.findById(personId).get().getAdresses();
+         return personRepository
+                 .findById(personId)
+                 .orElseThrow(() -> new NotFoundElementException("Pessoa não encontrada: " + personId))
+                 .getAdresses();
     }
 
     @Override
