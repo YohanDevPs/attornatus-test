@@ -35,7 +35,7 @@ public class PersonController {
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void removeFarmById(@PathVariable("id") Long id) {
+    public void deletePersonById(@PathVariable("id") Long id) {
         personService.deletePersonById(id);
     };
 

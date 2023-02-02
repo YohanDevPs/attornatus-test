@@ -1,9 +1,9 @@
 package com.example.attornatus.service;
 
 import com.example.attornatus.exception.NotFoundElementException;
-import com.example.attornatus.model.Adress;
+import com.example.attornatus.model.Address;
 import com.example.attornatus.model.Person;
-import com.example.attornatus.repository.AdressRepository;
+import com.example.attornatus.repository.AddressRepository;
 import com.example.attornatus.repository.PersonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,32 +12,32 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 @Service
-public class AdressSeviceImpl implements AdressService{
+public class AddressSeviceImpl implements AddressService {
 
     @Autowired
-    AdressRepository adressRepository;
+    AddressRepository addressRepository;
 
     @Autowired
     private PersonRepository personRepository;
 
     @Override
-    public Adress saveAdressInPersonById(Long personId, Adress adress) {
+    public Address saveAddressInPersonById(Long personId, Address address) {
         Person person = personRepository
                 .findById(personId)
                 .orElseThrow(() -> new NotFoundElementException("Pessoa não encontrada: " + personId));
 
         if(person.getAdresses().isEmpty()) {
-            adress.setMainResidence(true);
+            address.setMainResidence(true);
         }
 
-        adress.setPerson(person);
-        person.getAdresses().add(adress);
+        address.setPerson(person);
+        person.getAdresses().add(address);
 
-        return adressRepository.save(adress);
+        return addressRepository.save(address);
     }
 
     @Override
-    public Set<Adress> getAdressesByPersonId(Long personId) {
+    public Set<Address> getAddressesByPersonId(Long personId) {
          return personRepository
                  .findById(personId)
                  .orElseThrow(() -> new NotFoundElementException("Pessoa não encontrada: " + personId))
@@ -45,7 +45,7 @@ public class AdressSeviceImpl implements AdressService{
     }
 
     @Override
-    public Adress getMainAdressByPersonId(Long personId) {
+    public Address getMainAddressByPersonId(Long personId) {
 
         Person person = personRepository.findById(personId)
                 .orElseThrow(() -> new NotFoundElementException("Pessoa não encontrada: " + personId));
