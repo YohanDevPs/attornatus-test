@@ -22,16 +22,6 @@ public class Person {
     @OneToMany(cascade=CascadeType.MERGE, mappedBy="person", orphanRemoval=true)
     private Set<Adress> adresses = new HashSet<>();
 
-    public Person() {
-    }
-
-    public Person(Long id, String name, Date birthDate, Set<Adress> adresses) {
-        this.id = id;
-        this.name = name;
-        this.birthDate = birthDate;
-        this.adresses = adresses;
-    }
-
     public Long getId() {
         return id;
     }
@@ -56,11 +46,11 @@ public class Person {
         this.birthDate = birthDate;
     }
 
-    public Set<Adress> getAdressSet() {
+    public Set<Adress> getAdresses() {
         return adresses;
     }
 
-    public void setAdressSet(Set<Adress> adresses) {
+    public void setAdresses(Set<Adress> adresses) {
         this.adresses = adresses;
     }
 }

@@ -22,26 +22,13 @@ public class Adress {
     @Column(nullable = false)
     private String city;
 
-    @Column(nullable = false)
+    @Column(name = "isMainResidence", nullable = false)
     private boolean isMainResidence;
 
     @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "person_id")
     private Person person;
-
-    public Adress() {
-    }
-
-    public Adress(Long id, String adress, int CEP, int number, String city, boolean isMainResidence, Person person) {
-        this.id = id;
-        this.adress = adress;
-        this.CEP = CEP;
-        this.number = number;
-        this.city = city;
-        this.isMainResidence = isMainResidence;
-        this.person = person;
-    }
 
     public Long getId() {
         return id;
