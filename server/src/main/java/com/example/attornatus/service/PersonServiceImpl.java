@@ -3,7 +3,6 @@ package com.example.attornatus.service;
 import com.example.attornatus.exception.NotFoundElementException;
 import com.example.attornatus.model.Person;
 import com.example.attornatus.repository.PersonRepository;
-import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

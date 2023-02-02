@@ -1,5 +1,6 @@
 package com.example.attornatus.service;
 
+import com.example.attornatus.exception.NotFoundElementException;
 import com.example.attornatus.model.Adress;
 import com.example.attornatus.model.Person;
 import com.example.attornatus.repository.AdressRepository;
@@ -7,7 +8,6 @@ import com.example.attornatus.repository.PersonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -21,8 +21,10 @@ public class AdressSeviceImpl implements AdressService{
     private PersonRepository personRepository;
 
     @Override
-    public Adress saveAdress(Long personId, Adress adress) {
-        Person person = personRepository.getById(personId);
+    public Adress saveAdressInPersonById(Long personId, Adress adress) {
+        Person person = personRepository
+                .findById(personId)
+                .orElseThrow(() -> new NotFoundElementException("Pessoa não encontrada: " + personId));
 
         if(person.getAdresses().isEmpty()) {
             adress.setMainResidence(true);
@@ -30,9 +32,8 @@ public class AdressSeviceImpl implements AdressService{
 
         adress.setPerson(person);
         person.getAdresses().add(adress);
-        adressRepository.save(adress);
 
-        return adress;
+        return adressRepository.save(adress);
     }
 
     @Override
@@ -42,16 +43,18 @@ public class AdressSeviceImpl implements AdressService{
 
     @Override
     public Adress getMainAdressByPersonId(Long personId) {
-        Adress mainAdress = personRepository
-                .getReferenceById(personId)
-                .getAdresses()
+
+        Person person = personRepository.findById(personId)
+                .orElseThrow(() -> new NotFoundElementException("Pessoa não encontrada: " + personId));
+
+        if(person.getAdresses().isEmpty()) {
+            throw new NotFoundElementException("Endereço não encontrado: " + personId);
+        }
+
+        return person.getAdresses()
                 .stream()
                 .filter(c -> c.isMainResidence() == true)
                 .collect(Collectors.toList())
                 .get(0);
-
-
-        return mainAdress;
     }
-
 }

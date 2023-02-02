@@ -19,7 +19,7 @@ public class AdressController {
     @PostMapping("/{personId}")
     @ResponseStatus(HttpStatus.CREATED)
     public Adress saveAdress(@RequestBody Adress adress, @PathVariable("personId") Long personId) {
-        return adressService.saveAdress(personId, adress);
+        return adressService.saveAdressInPersonById(personId, adress);
     }
 
     @GetMapping("/{personId}")
