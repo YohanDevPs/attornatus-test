@@ -1,7 +1,9 @@
 package com.example.attornatus.service;
 
+import com.example.attornatus.exception.NotFoundElementException;
 import com.example.attornatus.model.Person;
 import com.example.attornatus.repository.PersonRepository;
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,12 +17,13 @@ public class PersonServiceImpl implements PersonService{
 
     @Override
     public Person getPersonById(Long idPerson) {
-        return personRepository.findById(idPerson).get();
+        return personRepository.findById(idPerson)
+                .orElseThrow(() -> new NotFoundElementException("Pessoa não encontrada: " + idPerson));
     }
 
     @Override
     public List<Person> personList() {
-        return personRepository.findAll();
+         return personRepository.findAll();
     }
 
     @Override
@@ -29,13 +32,16 @@ public class PersonServiceImpl implements PersonService{
     }
 
     @Override
-    public void deletePersonById(Long id) {
-        personRepository.deleteById(id);
+    public void deletePersonById(Long idPerson) {
+        Person person = personRepository.findById(idPerson)
+                .orElseThrow(() -> new NotFoundElementException("Pessoa não encontrada " + idPerson));
+
+        personRepository.delete(person);
     }
 
     @Override
-    public Person updatePerson(Long id,Person person) {
-        person.setId(id);
+    public Person updatePerson(Long idPerson,Person person) {
+        person.setId(idPerson);
         return personRepository.save(person);
     }
 }
