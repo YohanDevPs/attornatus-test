@@ -15,7 +15,7 @@ import java.util.stream.Collectors;
 public class AddressSeviceImpl implements AddressService {
 
     @Autowired
-    AddressRepository addressRepository;
+    private AddressRepository addressRepository;
 
     @Autowired
     private PersonRepository personRepository;
