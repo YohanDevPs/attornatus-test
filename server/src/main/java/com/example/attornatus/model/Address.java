@@ -30,6 +30,14 @@ public class Address {
     @JoinColumn(name = "person_id")
     private Person person;
 
+    public Address(String address, int CEP, int number, String city, boolean isMainResidence) {
+        this.address = address;
+        this.CEP = CEP;
+        this.number = number;
+        this.city = city;
+        this.isMainResidence = isMainResidence;
+    }
+
     public Long getId() {
         return id;
     }

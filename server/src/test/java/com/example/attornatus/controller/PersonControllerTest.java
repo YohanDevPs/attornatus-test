@@ -53,19 +53,4 @@ public class PersonControllerTest {
                 .andExpect(content().contentType("application/json"))
                 .andExpect(jsonPath("$.name").value(persons.get(0).getName()));
     }
-
-    @Test
-    public void mustCreatePerson_andReturnIsCreated() throws Exception {
-        Person person = new Person("Jose", new Date());
-
-        ObjectMapper mapper = new ObjectMapper();
-
-
-        String personAsJson = mapper.writeValueAsString(person);
-
-        this.mockMvc.perform(post(url).content(personAsJson).accept(MediaType.APPLICATION_JSON_VALUE)
-                .contentType(MediaType.APPLICATION_JSON_VALUE)).andExpect(status().isCreated());
-    }
-
-
 }

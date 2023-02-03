@@ -1,6 +1,5 @@
 package com.example.attornatus.service;
 
-import com.example.attornatus.AttornatusApplicationTests;
 import com.example.attornatus.exception.NotFoundElementException;
 import com.example.attornatus.model.Person;
 import com.example.attornatus.repository.AddressRepository;
@@ -9,18 +8,21 @@ import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentMatchers;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.util.*;
 
-public class PersonServiceTest extends AttornatusApplicationTests {
+@SpringBootTest
+@AutoConfigureMockMvc
+public class PersonServiceTest {
+
     @MockBean
     private AddressRepository addressRepository;
-
     @MockBean
     private PersonRepository personRepository;
-
     @Autowired
     private PersonService personService;
 
@@ -41,7 +43,6 @@ public class PersonServiceTest extends AttornatusApplicationTests {
                 .findById(ArgumentMatchers.eq(personId));
     }
 
-
     @Test
     public void mustTestGetAllPersons() {
         List<Person> personCollection = createListOfPersons();
@@ -52,7 +53,6 @@ public class PersonServiceTest extends AttornatusApplicationTests {
         Mockito.verify(personRepository, Mockito.times(1))
                 .findAll();
     }
-
 
     @Test
     public void mustTestSavePerson() {
@@ -75,7 +75,6 @@ public class PersonServiceTest extends AttornatusApplicationTests {
         personService.deletePersonById(personId);
         Mockito.verify(personRepository, Mockito.times(1)).delete(person);
     }
-
 
 
     public Person createPerson() {

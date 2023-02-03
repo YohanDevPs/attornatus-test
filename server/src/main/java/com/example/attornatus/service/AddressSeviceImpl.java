@@ -4,7 +4,6 @@ import com.example.attornatus.exception.NotFoundElementException;
 import com.example.attornatus.model.Address;
 import com.example.attornatus.model.Person;
 import com.example.attornatus.repository.AddressRepository;
-import com.example.attornatus.repository.PersonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,13 +17,11 @@ public class AddressSeviceImpl implements AddressService {
     private AddressRepository addressRepository;
 
     @Autowired
-    private PersonRepository personRepository;
+    private PersonService personService;
 
     @Override
     public Address saveAddressInPersonById(Long personId, Address address) {
-        Person person = personRepository
-                .findById(personId)
-                .orElseThrow(() -> new NotFoundElementException("Pessoa não encontrada: " + personId));
+        Person person = personService.getPersonById(personId);
 
         if(person.getAdresses().isEmpty()) {
             address.setMainResidence(true);
@@ -38,17 +35,12 @@ public class AddressSeviceImpl implements AddressService {
 
     @Override
     public Set<Address> getAddressesByPersonId(Long personId) {
-         return personRepository
-                 .findById(personId)
-                 .orElseThrow(() -> new NotFoundElementException("Pessoa não encontrada: " + personId))
-                 .getAdresses();
+         return personService.getPersonById(personId).getAdresses();
     }
 
     @Override
     public Address getMainAddressByPersonId(Long personId) {
-
-        Person person = personRepository.findById(personId)
-                .orElseThrow(() -> new NotFoundElementException("Pessoa não encontrada: " + personId));
+        Person person = personService.getPersonById(personId);
 
         if(person.getAdresses().isEmpty()) {
             throw new NotFoundElementException("Endereço não encontrado: " + personId);
