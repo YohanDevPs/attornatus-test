@@ -23,8 +23,8 @@ public class PersonController {
 
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
-    public List<Person> personList() {
-        return personService.personList();
+    public List<Person> getAllPersons() {
+        return personService.getAllPersons();
     }
 
     @PostMapping

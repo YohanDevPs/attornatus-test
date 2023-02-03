@@ -21,7 +21,7 @@ public class PersonServiceImpl implements PersonService{
     }
 
     @Override
-    public List<Person> personList() {
+    public List<Person> getAllPersons() {
          return personRepository.findAll();
     }
 

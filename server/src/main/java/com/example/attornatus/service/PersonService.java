@@ -8,7 +8,7 @@ public interface PersonService {
 
     Person getPersonById(Long idPerson);
 
-    List<Person> personList();
+    List<Person> getAllPersons();
 
     Person savePerson(Person person);
 

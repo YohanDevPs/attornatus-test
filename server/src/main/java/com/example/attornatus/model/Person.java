@@ -22,6 +22,11 @@ public class Person {
     @OneToMany(cascade=CascadeType.MERGE, mappedBy="person", orphanRemoval=true)
     private Set<Address> addresses = new HashSet<>();
 
+    public Person(String name, Date birthDate) {
+        this.name = name;
+        this.birthDate = birthDate;
+    }
+
     public Long getId() {
         return id;
     }
