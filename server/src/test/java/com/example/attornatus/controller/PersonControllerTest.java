@@ -34,17 +34,14 @@ public class PersonControllerTest {
     private PersonController personController;
     @MockBean
     private PersonService personService;
-    private List<Person> persons;
 
     private String url = "/v1/person";
 
     @BeforeEach
     public void initPersonList() {
-        mockMvc = MockMvcBuilders.standaloneSetup(personController).setControllerAdvice().build();
-        persons = new ArrayList<Person>();
-
-        persons.add(new Person("Yohan", new Date()));
-        persons.add(new Person("Pedro", new Date()));
+        mockMvc = MockMvcBuilders.standaloneSetup(personController)
+                .setControllerAdvice()
+                .build();
     }
 
     @Test
@@ -93,6 +90,11 @@ public class PersonControllerTest {
 
     @Test
     public void mustReturnIsOk_WhenPersonById() throws Exception {
+        List<Person> persons = new ArrayList<Person>();
+
+        persons.add(new Person("Yohan", new Date()));
+        persons.add(new Person("Pedro", new Date()));
+
         BDDMockito.given(personService.getPersonById(1L)).willReturn(persons.get(0));
 
         this.mockMvc.perform(get(url + "/1").accept(MediaType.APPLICATION_JSON_VALUE))
