@@ -38,7 +38,7 @@ public class PersonControllerTest {
     private String url = "/v1/person";
 
     @BeforeEach
-    public void initPersonList() {
+    public void setup() {
         mockMvc = MockMvcBuilders.standaloneSetup(personController)
                 .setControllerAdvice()
                 .build();
