@@ -28,7 +28,6 @@ public class AddressServiceTest {
     @Autowired
     private AddressService addressService;
 
-
     @Test
     public void mustSaveAddressesInPersonId() {
         Person person = createPerson();

@@ -26,7 +26,6 @@ public class PersonServiceTest {
     @Autowired
     private PersonService personService;
 
-
     @Test
     public void mustTestGetPersonById() {
         Long personId = 1L;
