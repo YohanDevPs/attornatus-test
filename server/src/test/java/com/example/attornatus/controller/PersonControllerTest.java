@@ -75,17 +75,17 @@ public class PersonControllerTest {
     }
 
     @Test
-    public void mustReturnIsOk_WhenAListOfPersons() throws Exception {
+    public void mustReturnIsOk_WhenGetAListOfPersons() throws Exception {
         var persons = new Person("Yohan", new Date(2000, 2, 1));
         Mockito.when(personService.getAllPersons()).thenReturn(List.of(persons));
 
         ObjectMapper mapper = new ObjectMapper();
 
-        var json = mapper.writeValueAsString(persons);
+        var json = mapper.writeValueAsString(List.of(persons));
 
         this.mockMvc.perform(get(url))
                 .andExpect(status().isOk())
-                .andExpect(content().json("["+json+"]"));
+                .andExpect(content().json(json));
     }
 
     @Test

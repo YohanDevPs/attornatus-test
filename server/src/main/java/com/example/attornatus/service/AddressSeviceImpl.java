@@ -20,7 +20,7 @@ public class AddressSeviceImpl implements AddressService {
     private PersonService personService;
 
     @Override
-    public Address saveAddressInPersonById(Long personId, Address address) {
+    public Address saveAddressInPersonById(Address address, Long personId) {
         Person person = personService.getPersonById(personId);
 
         if(person.getAdresses().isEmpty()) {

@@ -6,7 +6,7 @@ import java.util.Set;
 
 public interface AddressService {
 
-    Address saveAddressInPersonById(Long personId, Address address);
+    Address saveAddressInPersonById(Address address, Long personId);
 
     Set<Address> getAddressesByPersonId(Long personId);
 

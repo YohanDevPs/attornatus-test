@@ -38,6 +38,9 @@ public class Address {
         this.isMainResidence = isMainResidence;
     }
 
+    public Address() {
+    }
+
     public Long getId() {
         return id;
     }

@@ -18,17 +18,17 @@ public class AddressController {
     @PostMapping("/{personId}")
     @ResponseStatus(HttpStatus.CREATED)
     public Address saveAddressInPersonById(@RequestBody Address Address, @PathVariable("personId") Long personId) {
-        return addressService.saveAddressInPersonById(personId, Address);
+        return addressService.saveAddressInPersonById(Address, personId);
     }
 
     @GetMapping("/{personId}")
-    @ResponseStatus(HttpStatus.CREATED)
+    @ResponseStatus(HttpStatus.OK)
     public Set<Address> getAddressesByPersonId(@PathVariable("personId") Long personId) {
         return addressService.getAddressesByPersonId(personId);
     }
 
     @GetMapping("mainAddress/personId/{personId}")
-    @ResponseStatus(HttpStatus.CREATED)
+    @ResponseStatus(HttpStatus.OK)
     public Address getMainAddressByPersonId(@PathVariable("personId") Long personId) {
         return addressService.getMainAddressByPersonId(personId);
     }
