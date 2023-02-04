@@ -48,7 +48,7 @@ public class AddressControllerTest {
     }
 
     @Test
-    public void testPostAddressInPersonId() throws Exception {
+    public void testEndpointCreateAddressInPersonId() throws Exception {
         var address = new Address();
         address.setAddress("Rua Brasil");
         address.setCEP(12344);
@@ -61,11 +61,11 @@ public class AddressControllerTest {
 
         ObjectMapper mapper = new ObjectMapper();
 
-        var json = mapper.writeValueAsString(address);
+        var jsonAddress = mapper.writeValueAsString(address);
 
-        this.mockMvc.perform(post("http://localhost:8080/v1/address/1")
+        this.mockMvc.perform(post(url+"/{personId}", personId)
                 .contentType(MediaType.APPLICATION_JSON)
-                .content(json))
+                .content(jsonAddress))
                 .andExpect(status().isCreated());
     }
 
@@ -78,11 +78,11 @@ public class AddressControllerTest {
 
         ObjectMapper mapper = new ObjectMapper();
 
-        var json = mapper.writeValueAsString(Set.of(address));
+        var jsonAddress = mapper.writeValueAsString(Set.of(address));
 
         this.mockMvc.perform(get(url+"/{personId}", personId))
                 .andExpect(status().isOk())
-                .andExpect(content().json(json));
+                .andExpect(content().json(jsonAddress));
     }
 
     @Test
@@ -94,10 +94,10 @@ public class AddressControllerTest {
 
         ObjectMapper mapper = new ObjectMapper();
 
-        var json = mapper.writeValueAsString(address);
+        var jsonAddress = mapper.writeValueAsString(address);
 
         this.mockMvc.perform(get(url+"/mainAddress/personId/{personId}", personId))
                 .andExpect(status().isOk())
-                .andExpect(content().json(json));
+                .andExpect(content().json(jsonAddress));
     }
 }

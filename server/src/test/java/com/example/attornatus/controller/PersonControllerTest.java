@@ -45,7 +45,7 @@ public class PersonControllerTest {
     }
 
     @Test
-    public void deletionByIdPerson_noContent() throws Exception {
+    public void testEndpointDeletionByIdPerson() throws Exception {
         Long idPerson = 1L;
         Mockito.doNothing().when(personService).deletePersonById(idPerson);
 
@@ -56,7 +56,7 @@ public class PersonControllerTest {
 
 
     @Test
-    public void mustReturnIsCreated_WhenSaveAPerson() throws Exception {
+    public void testEndpointCreatePerson() throws Exception {
         var person = new Person();
         person.setName("Yohan");
         person.setBirthDate(new Date(2000, 2, 1));
@@ -75,7 +75,7 @@ public class PersonControllerTest {
     }
 
     @Test
-    public void mustReturnIsOk_WhenGetAListOfPersons() throws Exception {
+    public void testEndpointGetListPersons() throws Exception {
         var persons = new Person("Yohan", new Date(2000, 2, 1));
         Mockito.when(personService.getAllPersons()).thenReturn(List.of(persons));
 
@@ -89,7 +89,7 @@ public class PersonControllerTest {
     }
 
     @Test
-    public void mustReturnIsOk_WhenPersonById() throws Exception {
+    public void testEndpointGetPersonById() throws Exception {
         List<Person> persons = new ArrayList<Person>();
 
         persons.add(new Person("Yohan", new Date()));

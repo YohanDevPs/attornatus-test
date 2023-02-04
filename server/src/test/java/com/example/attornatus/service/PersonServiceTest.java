@@ -27,7 +27,7 @@ public class PersonServiceTest {
     private PersonService personService;
 
     @Test
-    public void mustTestGetPersonById() {
+    public void testServiceGetPersonById() {
         Long personId = 1L;
 
         Person person = createPerson();
@@ -43,7 +43,7 @@ public class PersonServiceTest {
     }
 
     @Test
-    public void mustTestGetAllPersons() {
+    public void testServiceGetAllPersons() {
         List<Person> personCollection = createListOfPersons();
 
         Mockito.when(personRepository.findAll()).thenReturn(personCollection);
@@ -54,14 +54,14 @@ public class PersonServiceTest {
     }
 
     @Test
-    public void mustTestSavePerson() {
+    public void testServiceSavePerson() {
         Person person = createPerson();
         personService.savePerson(person);
         Mockito.verify(personRepository, Mockito.times(1)).save(person);
     }
 
     @Test
-    public void mustTestDeletePersonByIdMethod() {
+    public void testServiceDeletePersonByIdMethod() {
         Long personId = 1L;
 
         Person person = createPerson();

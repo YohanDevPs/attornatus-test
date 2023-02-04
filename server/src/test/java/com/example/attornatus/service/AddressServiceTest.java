@@ -29,7 +29,7 @@ public class AddressServiceTest {
     private AddressService addressService;
 
     @Test
-    public void mustSaveAddressesInPersonId() {
+    public void testServiceSaveAddressesInPersonId() {
         Person person = createPerson();
 
         Long personId = 1L;
@@ -38,7 +38,7 @@ public class AddressServiceTest {
     }
 
     @Test
-    public void mustGetAddressesByPersonId() {
+    public void testServiceGetAddressesByPersonId() {
         Person person = createPerson();
 
         Set<Address> addresses = Mockito.mock(Set.class);
@@ -48,7 +48,7 @@ public class AddressServiceTest {
     }
 
     @Test
-    public void mustGetMainAddressesByPersonId() {
+    public void testServiceGetMainAddressesByPersonId() {
         Long personId = 1L;
         Person person = createPerson();
 
@@ -56,15 +56,6 @@ public class AddressServiceTest {
                 .thenReturn(person);
 
         addressService.getMainAddressByPersonId(personId);
-    }
-
-    public Address createAddress() {
-        Address address = Mockito.mock(Address.class);
-        Mockito.when(address.getId()).thenReturn(1L);
-        Mockito.when(address.getAddress()).thenReturn("Rua Brasil");
-        Mockito.when(address.getCEP()).thenReturn(71320400);
-        Mockito.when(address.isMainResidence()).thenReturn(true);
-        return address;
     }
 
     public Person createPerson() {
