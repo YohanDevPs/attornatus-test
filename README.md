@@ -1,7 +1,15 @@
 # Avaliação Desenvolvedor Back-end Attornatus
 
+## Questões de qualidade de código:
 
-[avaliacao_desenvolvedor_backend.docx](https://github.com/YohanDevPs/attornatus-test/files/10669963/avaliao_desenvolvedor_backend.docx)
+### Durante a implementação de uma nova funcionalidade de software solicitada, quais critérios você avalia e implementa para garantia de qualidade de software?
+
+Como critérios de garantia de qualidade de software, empregaria o foco em codificar baseado em padrões estabelecidos e utilizados pelo software e desenvolver testes com alta cobertura.
+
+### Em qual etapa da implementação você considera a qualidade de software
+
+Na etapa de Desenvolvimento, pois caso bem feita, as chances de erros diminuem e conseguentemente menos refatorações serão necessárias.   
+
 
 
 ## Descrição do desafio: 
