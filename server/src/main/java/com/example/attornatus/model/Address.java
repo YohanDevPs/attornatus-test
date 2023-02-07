@@ -14,7 +14,7 @@ public class Address {
     private String street;
 
     @Column(nullable = false)
-    private int CEP;
+    private int cep;
 
     @Column(nullable = false)
     private int number;
@@ -30,9 +30,9 @@ public class Address {
     @JoinColumn(name = "person_id")
     private Person person;
 
-    public Address(String street, int CEP, int number, String city, boolean isMainResidence) {
+    public Address(String street, int cep, int number, String city, boolean isMainResidence) {
         this.street = street;
-        this.CEP = CEP;
+        this.cep = cep;
         this.number = number;
         this.city = city;
         this.isMainResidence = isMainResidence;
@@ -57,12 +57,12 @@ public class Address {
         this.street = street;
     }
 
-    public int getCEP() {
-        return CEP;
+    public int getCep() {
+        return cep;
     }
 
-    public void setCEP(int CEP) {
-        this.CEP = CEP;
+    public void setCep(int cep) {
+        this.cep = cep;
     }
 
     public int getNumber() {
