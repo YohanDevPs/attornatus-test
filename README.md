@@ -6,7 +6,7 @@
 
 Como critérios de garantia de qualidade de software, empregaria o foco em codificar baseado em padrões estabelecidos e utilizados pelo software e desenvolver testes com alta cobertura.
 
-### Em qual etapa da implementação você considera a qualidade de software
+### Em qual etapa da implementação você considera a qualidade de software?
 
 Na etapa de Desenvolvimento, pois caso bem feita, as chances de erros diminuem e conseguentemente menos refatorações serão necessárias.   
 
