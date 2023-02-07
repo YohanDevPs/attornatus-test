@@ -23,7 +23,7 @@ public class AddressSeviceImpl implements AddressService {
     public Address saveAddressInPersonById(Address address, Long personId) {
         Person person = personService.getPersonById(personId);
 
-        if(person.getAdresses().isEmpty()) {
+        if(person.getAdresses().isEmpty() && address.isMainResidence() == true) {
             address.setMainResidence(true);
         }
 

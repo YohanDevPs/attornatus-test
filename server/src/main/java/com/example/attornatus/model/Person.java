@@ -1,5 +1,6 @@
 package com.example.attornatus.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 
 import java.util.Date;
@@ -15,7 +16,7 @@ public class Person {
 
     @Column(nullable = false)
     private String name;
-
+    @JsonFormat(pattern="dd-MM-yyyy")
     @Column(nullable = false)
     private Date birthDate;
 

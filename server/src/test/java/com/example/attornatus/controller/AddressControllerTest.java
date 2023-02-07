@@ -50,7 +50,7 @@ public class AddressControllerTest {
     @Test
     public void testEndpointCreateAddressInPersonId() throws Exception {
         var address = new Address();
-        address.setAddress("Rua Brasil");
+        address.setStreet("Rua Brasil");
         address.setCEP(12344);
         address.setNumber(1244);
         address.setCity("Sao Paulo");
