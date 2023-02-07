@@ -7,37 +7,25 @@
 ## Descrição do desafio: 
 
 ### API simples para gerenciar Pessoas, no qual deve-se permitir:
-⦁	Criar uma pessoa
-
-⦁	Editar uma pessoa 
-
-⦁	Consultar uma pessoa 
-
-⦁	Listar pessoas 
-
-⦁	Criar endereço para pessoa 
-
-⦁	Listar endereços da pessoa 
-
-⦁	Poder informar qual endereço é o principal da pessoa  
+-	Criar uma pessoa
+- Editar uma pessoa 
+-	Consultar uma pessoa 
+-	Listar pessoas 
+-	Criar endereço para pessoa 
+-	Listar endereços da pessoa 
+-	Poder informar qual endereço é o principal da pessoa  
 
 ### A entidade Pessoa deve possuir os seguintes campos:
 
 - Nome
-
 - Data de nascimento
-
 - Endereço:
-
   -	Logradouro
-  
   - CEP
-  
   - Número
-  
   -	Cidade
   
-  
+
  ### Gifs das requisições
   
   
