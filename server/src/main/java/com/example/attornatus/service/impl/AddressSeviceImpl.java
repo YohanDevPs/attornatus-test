@@ -1,9 +1,11 @@
-package com.example.attornatus.service;
+package com.example.attornatus.service.impl;
 
 import com.example.attornatus.exception.NotFoundElementException;
 import com.example.attornatus.model.Address;
 import com.example.attornatus.model.Person;
 import com.example.attornatus.repository.AddressRepository;
+import com.example.attornatus.service.AddressService;
+import com.example.attornatus.service.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

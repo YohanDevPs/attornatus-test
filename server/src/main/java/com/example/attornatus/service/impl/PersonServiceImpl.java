@@ -1,15 +1,16 @@
-package com.example.attornatus.service;
+package com.example.attornatus.service.impl;
 
 import com.example.attornatus.exception.NotFoundElementException;
 import com.example.attornatus.model.Person;
 import com.example.attornatus.repository.PersonRepository;
+import com.example.attornatus.service.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-public class PersonServiceImpl implements PersonService{
+public class PersonServiceImpl implements PersonService {
 
     @Autowired
     private PersonRepository personRepository;
