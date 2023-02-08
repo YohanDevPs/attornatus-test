@@ -8,7 +8,7 @@ Como critérios de garantia de qualidade de software, empregaria o foco em codif
 
 ### Em qual etapa da implementação você considera a qualidade de software?
 
-Na etapa de Desenvolvimento, pois caso bem feita, as chances de erros diminuem e conseguentemente menos refatorações serão necessárias.   
+Na etapa de Desenvolvimento, pois caso bem feita, as chances de erros diminuem e conseguentemente menos correções e custos serão necessários.   
 
 
 
