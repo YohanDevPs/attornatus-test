@@ -3,6 +3,8 @@ package com.example.attornatus.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
+import javax.validation.constraints.NotNull;
+
 @Entity
 public class Address {
 
@@ -10,19 +12,23 @@ public class Address {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false)
+    @Column
+    @NotNull
     private String street;
 
-    @Column(nullable = false)
+    @Column
+    @NotNull
     private int cep;
 
-    @Column(nullable = false)
+    @Column
+    @NotNull
     private int number;
 
-    @Column(nullable = false)
+    @Column
+    @NotNull
     private String city;
 
-    @Column(name = "isMainResidence", nullable = false)
+    @Column(name = "isMainResidence")
     private boolean isMainResidence;
 
     @JsonIgnore

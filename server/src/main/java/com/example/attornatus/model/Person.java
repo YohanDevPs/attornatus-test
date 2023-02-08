@@ -3,6 +3,7 @@ package com.example.attornatus.model;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 
+import javax.validation.constraints.NotNull;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -14,10 +15,13 @@ public class Person {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false)
+    @Column
+    @NotNull
     private String name;
+
+    @Column
+    @NotNull
     @JsonFormat(pattern="dd-MM-yyyy")
-    @Column(nullable = false)
     private Date birthDate;
 
     @OneToMany(cascade=CascadeType.MERGE, mappedBy="person", orphanRemoval=true)
