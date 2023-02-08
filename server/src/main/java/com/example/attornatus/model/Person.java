@@ -3,7 +3,7 @@ package com.example.attornatus.model;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.NotBlank;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -16,11 +16,11 @@ public class Person {
     private Long id;
 
     @Column
-    @NotNull
+    @NotBlank
     private String name;
 
     @Column
-    @NotNull
+    @NotBlank
     @JsonFormat(pattern="dd-MM-yyyy")
     private Date birthDate;
 
